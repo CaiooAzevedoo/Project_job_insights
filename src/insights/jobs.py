@@ -6,8 +6,7 @@ import csv
 @lru_cache
 def read(path: str) -> List[Dict]:
     with open(path) as file:
-        file_open = csv.reader(file)
-        header, *data = file_open
+        header, *data = csv.reader(file)
     file_list = list()
     for row in data:
         file_dict = dict()
