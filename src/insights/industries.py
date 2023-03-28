@@ -6,7 +6,8 @@ def get_unique_industries(path: str) -> List[str]:
     jobs_registered = jobs.read(path)
     jobs_industry = list()
     for job in jobs_registered:
-        jobs_industry.append(job['industry'])
+        if job["industry"] != "":
+            jobs_industry.append(job["industry"])
     return list(set(jobs_industry))
 
 
