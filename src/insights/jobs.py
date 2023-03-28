@@ -7,7 +7,7 @@ import csv
 def read(path: str) -> List[Dict]:
     with open(path) as file:
         file_open = csv.reader(file)
-        header, * data = file_open
+        header, *data = file_open
     file_list = list()
     for row in data:
         file_dict = dict()
@@ -18,21 +18,11 @@ def read(path: str) -> List[Dict]:
 
 
 def get_unique_job_types(path: str) -> List[str]:
-    """Checks all different job types and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    raise NotImplementedError
+    jobs = read(path)
+    job_types = list()
+    for job in jobs:
+        job_types.append(job['job_type'])
+    return list(set(job_types))
 
 
 def filter_by_job_type(jobs: List[Dict], job_type: str) -> List[Dict]:
