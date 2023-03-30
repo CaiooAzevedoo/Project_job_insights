@@ -35,7 +35,7 @@ def filter_by_salary_range(
     jobs: List[dict],
     salary: Union[str, int]
 ) -> List[Dict]:
-    list_salary = []
+    list_salary = list()
     try:
         for job in jobs:
             if int(job["min_salary"]) <= int(salary) <= int(job["max_salary"]):
